@@ -10,6 +10,6 @@ export default {
       'primary': ['Lato', 'sans-serif'],
     }
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
 
