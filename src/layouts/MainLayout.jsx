@@ -99,6 +99,7 @@ const MainLayout = () => {
                         {/* Sidebar content here */}
                         <li><a>Sidebar Item 1</a></li>
                         <li><a>Sidebar Item 2</a></li>
+                        <li><Link to="/all-task">All Task</Link></li>
                         <li><Link to="/create-task">Create Task</Link></li>
                     </ul>
 
