@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
 
 const MainLayout = () => {
 
-    const navOptions = <>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/login'>Log In</Link></li>
-    <li><Link to='/'>Get started</Link></li>
-    {/* <li><Link to='/dashboard/mycart'>
-        <button className="btn gap-2">
-            <FaShoppingCart />
-            <div className="badge badge-secondary">+{cart?.length || 0}</div>
-        </button>
-    </Link></li> */}
+    const { user, logOut } = useContext(AuthContext);
 
-    {/* {
-        user ? <><button onClick={handleLogOut} className='btn btn-ghost'>Log Out</button></> : <><li><Link to='/login'>Login</Link></li></>
-    } */}
-</>
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err))
+    }
+
+    const navOptions = <>
+        <li><Link to='/'>Home</Link></li>
+        {!user && <li><Link to='/login'>Log In</Link></li>}
+        {!user && <li><Link to='/signup'>Sign Up</Link></li>}
+        {user && <li onClick={handleLogOut}><Link>Log Out</Link></li>}
+    </>
 
     return (
         <>

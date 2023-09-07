@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useForm, Controller } from 'react-hook-form';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Login = () => {
-    const {
-        handleSubmit,
-        control,
-        formState: { errors },
-    } = useForm();
-
-    // Define a state variable to manage the password input type
+    const { signIn } = useContext(AuthContext);
+    const { handleSubmit, control, formState: { errors } } = useForm();
     const [passwordType, setPasswordType] = useState('password');
 
     const onSubmit = (data) => {
         // Handle form submission here (e.g., send data to the server).
         console.log(data);
+
+        signIn(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                // navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.log(error);
+            })
     };
 
     return (
-        <div className="flex justify-center items-center h-[85vh] p-8">
+        <div className="flex justify-center items-center h-full p-8">
             <div className="bg-white shadow rounded p-6 w-[400px]">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h2 className="text-3xl text-center font-merriweather font-bold mb-2">Login</h2>
@@ -94,7 +100,7 @@ const Login = () => {
                 </form>
 
                 <p className='text-center mt-3 font-semibold'>
-                    New to Delicious World? <Link to='/register' className='text-yellow-500'>Sign Up</Link>
+                    New to CTMA? <Link to='/signup' className='text-yellow-500'>Sign Up</Link>
                 </p>
             </div>
         </div>
