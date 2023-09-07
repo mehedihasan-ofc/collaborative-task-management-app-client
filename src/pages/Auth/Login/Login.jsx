@@ -107,7 +107,7 @@ const Login = () => {
                 </form>
 
                 <p className='text-center mt-3 font-semibold'>
-                    New to CTMA? <Link to='/signup' className='text-yellow-500'>Sign Up</Link>
+                    New to CTM? <Link to='/signup' className='text-yellow-500'>Sign Up</Link>
                 </p>
             </div>
         </div>
