@@ -26,10 +26,17 @@ const CreateTask = () => {
             dueDate: dueDate,
             priority: priorityLevel,
             assignedTo: assignedTo,
+            mark: "progress"
         };
 
-        // You can send this new task object to an API, save it to a database, or handle it as needed.
-        console.log(newTask);
+        // Retrieve existing tasks array from local storage or initialize it as an empty array
+        const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        // Add the new task to the array
+        existingTasks.push(newTask);
+
+        // Save the updated tasks array back to local storage
+        localStorage.setItem('tasks', JSON.stringify(existingTasks));
 
         // Clear the form fields after submission
         setTaskTitle('');
@@ -114,8 +121,8 @@ const CreateTask = () => {
                             onChange={(e) => setAssignedTo(e.target.value)}
                         >
                             <option value="">Assign to team member</option>
-                            {users.map((user, _idx) => (
-                                <option key={_idx} value={user.id}>
+                            {users.map((user, idx) => (
+                                <option key={idx} value={user.email}>
                                     {user.name}
                                 </option>
                             ))}
