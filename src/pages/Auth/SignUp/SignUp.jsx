@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useForm, Controller } from 'react-hook-form';
 import { AuthContext } from '../../../providers/AuthProvider';
@@ -9,6 +9,10 @@ const SignUp = () => {
     const { handleSubmit, control, formState: { errors } } = useForm();
     const { createUser, updateUserData, setReload } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || '/';
 
     const togglePassword = () => {
         setShowPassword(!showPassword);
@@ -24,6 +28,7 @@ const SignUp = () => {
                 console.log(loggedUser);
 
                 toast.success('Sign Up successful')
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 console.log(err);
@@ -71,7 +76,7 @@ const SignUp = () => {
                             render={({ field }) => (
                                 <textarea
                                     id="bio"
-                                    className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md h-32 ${errors.bio ? 'border-red-500' : 'border-gray-400'}`}
+                                    className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md h-20 ${errors.bio ? 'border-red-500' : 'border-gray-400'}`}
                                     placeholder="Enter your bio"
                                     {...field}
                                     required // Marked as required
@@ -84,18 +89,19 @@ const SignUp = () => {
                     </div>
                     <div className="mb-2">
                         <label htmlFor="profilePicture" className="block text-gray-700 font-semibold mb-2">
-                            Profile Picture
+                            Profile Picture (URL)
                         </label>
                         <Controller
                             name="profilePicture"
                             control={control}
                             defaultValue=""
-                            rules={{ required: 'Profile picture is required' }}
+                            rules={{ required: 'Profile picture URL is required' }}
                             render={({ field }) => (
                                 <input
-                                    type="file"
+                                    type="text"
                                     id="profilePicture"
-                                    className="border-gray-400 border-solid border py-2 px-3 w-full rounded-md"
+                                    className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md ${errors.profilePicture ? 'border-red-500' : 'border-gray-400'}`}
+                                    placeholder="Enter the URL of your profile picture"
                                     {...field}
                                     required // Marked as required
                                 />

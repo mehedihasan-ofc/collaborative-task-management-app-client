@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useForm, Controller } from 'react-hook-form';
 import { AuthContext } from '../../../providers/AuthProvider';
@@ -9,6 +9,10 @@ const Login = () => {
     const { signIn } = useContext(AuthContext);
     const { handleSubmit, control, formState: { errors } } = useForm();
     const [passwordType, setPasswordType] = useState('password');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const onSubmit = (data) => {
         // Handle form submission here (e.g., send data to the server).
@@ -18,9 +22,9 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                // navigate(from, { replace: true });
-
+                
                 toast.success("Login successful");
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error);
@@ -28,7 +32,7 @@ const Login = () => {
     };
 
     return (
-        <div className="flex justify-center items-center h-full p-8">
+        <div className="flex justify-center items-center h-screen p-8">
             <div className="bg-white shadow rounded p-6 w-[400px]">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h2 className="text-3xl text-center font-merriweather font-bold mb-2">Login</h2>
