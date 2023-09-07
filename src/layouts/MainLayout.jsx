@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const MainLayout = () => {
 
@@ -8,7 +9,9 @@ const MainLayout = () => {
 
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                toast.success('Log Out successful')
+            })
             .catch(err => console.log(err))
     }
 

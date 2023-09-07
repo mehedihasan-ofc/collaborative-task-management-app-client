@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useForm, Controller } from 'react-hook-form';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
@@ -18,6 +19,8 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 // navigate(from, { replace: true });
+
+                toast.success("Login successful");
             })
             .catch(error => {
                 console.log(error);

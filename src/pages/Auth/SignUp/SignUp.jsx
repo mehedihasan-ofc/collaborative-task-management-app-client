@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useForm, Controller } from 'react-hook-form';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
     const { handleSubmit, control, formState: { errors } } = useForm();
@@ -21,6 +22,8 @@ const SignUp = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+
+                toast.success('Sign Up successful')
             })
             .catch(err => {
                 console.log(err);
