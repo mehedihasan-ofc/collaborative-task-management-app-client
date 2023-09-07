@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { FaChartBar, FaRegCalendarPlus, FaTasks, FaUserPlus } from "react-icons/fa";
 
 const MainLayout = () => {
 
@@ -97,10 +98,10 @@ const MainLayout = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
-                        <li><a>Sidebar Item 1</a></li>
-                        <li><a>Sidebar Item 2</a></li>
-                        <li><Link to="/all-task">All Task</Link></li>
-                        <li><Link to="/create-task">Create Task</Link></li>
+                        <li><Link to="/dashboard"><FaChartBar />Dashboard</Link></li>
+                        <li><Link to="/add-member"><FaUserPlus />Add Member</Link></li>
+                        <li><Link to="/all-task"><FaTasks />All Task</Link></li>
+                        <li><Link to="/create-task"><FaRegCalendarPlus />Create Task</Link></li>
                     </ul>
 
                 </div>
