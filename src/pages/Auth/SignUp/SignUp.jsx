@@ -6,7 +6,7 @@ import { AuthContext } from '../../../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
-    const { handleSubmit, control, formState: { errors } } = useForm();
+    const { handleSubmit, reset, control, formState: { errors } } = useForm();
     const { createUser, updateUserData, setReload } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate()
@@ -27,7 +27,15 @@ const SignUp = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
 
-                toast.success('Sign Up successful')
+                updateUserData(loggedUser, data.name, data.profilePicture)
+                    .then(() => {
+                        setReload(true);
+                        console.log("updated");
+                        reset();
+
+                        toast.success('Sign Up successful')
+                    })
+                    .catch(err => console.log(err))
                 navigate(from, { replace: true })
             })
             .catch(err => {
