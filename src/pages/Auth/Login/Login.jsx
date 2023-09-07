@@ -22,7 +22,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                
+
                 toast.success("Login successful");
                 navigate(from, { replace: true });
             })
