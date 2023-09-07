@@ -31,8 +31,11 @@ const SignUp = () => {
                     .then(() => {
                         setReload(true);
                         console.log("updated");
-                        reset();
 
+                        // save data => local storage
+                        localStorage.setItem("user", JSON.stringify(data))
+
+                        reset();
                         toast.success('Sign Up successful')
                     })
                     .catch(err => console.log(err))
@@ -45,7 +48,7 @@ const SignUp = () => {
 
     return (
         <div className="flex justify-center items-center h-full p-8">
-            <div className="bg-white shadow-lg rounded p-6 w-[500px]">
+            <div className="bg-white shadow rounded p-6 w-[500px]">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h2 className="text-3xl text-center font-merriweather font-bold mb-2">Sign up</h2>
                     <div className="mb-2">
