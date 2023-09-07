@@ -5,6 +5,7 @@ import Login from "../pages/Auth/Login/Login";
 import SignUp from "../pages/Auth/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/Home/Profile/Profile";
+import CreateTask from "../pages/Home/CreateTask/CreateTask";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: "/profile",
                 element: <Profile />
+            },
+            {
+                path: "/create-task",
+                element: <CreateTask />
             }
         ]
     },

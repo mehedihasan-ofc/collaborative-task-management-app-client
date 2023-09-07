@@ -59,7 +59,7 @@ const MainLayout = () => {
         <>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col items-center">
+                <div className="drawer-content">
                     {/* Page content here */}
 
                     {/* navbar */}
@@ -99,6 +99,7 @@ const MainLayout = () => {
                         {/* Sidebar content here */}
                         <li><a>Sidebar Item 1</a></li>
                         <li><a>Sidebar Item 2</a></li>
+                        <li><Link to="/create-task">Create Task</Link></li>
                     </ul>
 
                 </div>

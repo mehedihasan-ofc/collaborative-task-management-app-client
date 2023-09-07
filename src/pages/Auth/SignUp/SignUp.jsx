@@ -9,8 +9,8 @@ const SignUp = () => {
     const { handleSubmit, reset, control, formState: { errors } } = useForm();
     const { createUser, updateUserData, setReload } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
-    const navigate = useNavigate()
-    const location = useLocation()
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
 
@@ -32,14 +32,25 @@ const SignUp = () => {
                         setReload(true);
                         console.log("updated");
 
-                        // save data => local storage
-                        localStorage.setItem("user", JSON.stringify(data))
+                        // Get the existing user data from local storage (if any)
+                        const userCollection = JSON.parse(localStorage.getItem("users")) || [];
+
+                        // Add the new user data to the existing collection
+                        userCollection.push({
+                            name: data.name,
+                            bio: data.bio,
+                            profilePicture: data.profilePicture,
+                            email: data.email,
+                        });
+
+                        // Save the updated user collection to local storage
+                        localStorage.setItem("users", JSON.stringify(userCollection));
 
                         reset();
-                        toast.success('Sign Up successful')
+                        toast.success('Sign Up successful');
                     })
                     .catch(err => console.log(err))
-                navigate(from, { replace: true })
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 console.log(err);

@@ -3,7 +3,7 @@ import { AuthContext } from '../../../providers/AuthProvider';
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
-    const userJSON = JSON.parse(localStorage.getItem('user'));
+    // const userJSON = JSON.parse(localStorage.getItem('user'));
 
     return (
         <div className="flex flex-col items-center justify-center mt-8">
@@ -25,7 +25,8 @@ const Profile = () => {
                 </div>
                 <div className="text-center">
                     <textarea
-                        value={userJSON.bio}
+                        // value={userJSON.bio}
+                        value="aa"
                         readOnly
                         className="bg-gray-100 px-2 py-1 w-full rounded-md text-gray-700"
                     />
