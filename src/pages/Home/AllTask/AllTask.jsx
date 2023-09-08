@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import useTasks from '../../../hooks/useTasks';
 
 const AllTask = () => {
-    const [tasks, setTasks] = useState([]);
+    const [tasks] = useTasks();
     const [filterStatus, setFilterStatus] = useState('all'); // 'all', 'completed', 'inProgress', 'pending'
     const [sortBy, setSortBy] = useState('dueDate'); // 'dueDate', 'priority', 'title'
-
-    useEffect(() => {
-        // Retrieve tasks data from local storage
-        const tasksData = JSON.parse(localStorage.getItem('tasks')) || [];
-        setTasks(tasksData);
-    }, []); // Runs only once when the component mounts
 
     // Filter tasks based on the selected status
     const filteredTasks = tasks.filter((task) => {
         if (filterStatus === 'all') return true;
         if (filterStatus === 'completed') return task.mark === 'completed';
-        if (filterStatus === 'inProgress') return task.mark === 'inProgress';
+        if (filterStatus === 'progress') return task.mark === 'progress';
         if (filterStatus === 'pending') return task.mark === 'pending';
         return true;
     });
@@ -73,7 +68,7 @@ const AllTask = () => {
                             <th>Description</th>
                             <th>Due Date</th>
                             <th>Priority</th>
-                            <th>Mark</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,7 +80,7 @@ const AllTask = () => {
                                 <td>{task.description}</td>
                                 <td>{task.dueDate}</td>
                                 <td>{task.priority}</td>
-                                <td>{task.mark}</td>
+                                <td>{task.status}</td>
                             </tr>
                         ))}
                     </tbody>

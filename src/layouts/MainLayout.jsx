@@ -64,8 +64,8 @@ const MainLayout = () => {
                         {/* Sidebar content here */}
                         <li><Link to="/dashboard"><FaChartBar />Dashboard</Link></li>
                         {isTeamLeader && <li><Link to="/add-member"><FaUserPlus />Add Member</Link></li>}
-                        <li><Link to="/all-task"><FaTasks />All Task</Link></li>
                         {!isTeamLeader && <li><Link to="/my-task"><FaTable />My Task</Link></li>}
+                        <li><Link to="/all-task"><FaTasks />All Task</Link></li>
                         {isTeamLeader && <li><Link to="/create-task"><FaRegCalendarPlus />Create Task</Link></li>}
                     </ul>
 
