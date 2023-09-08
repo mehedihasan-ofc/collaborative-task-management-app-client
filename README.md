@@ -1,7 +1,7 @@
 # Collaborative Task Management App
 
 ## Live Link
-Hosted in Firebase -> [InstruPlay Academy](https://collaborative-task-manag-8531f.web.app/)
+Hosted in Firebase -> [collaborative Task Management](https://collaborative-task-manag-8531f.web.app/)
 
 ## Used packages/technology name
 - React-JS
