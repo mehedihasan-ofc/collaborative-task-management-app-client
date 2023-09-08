@@ -9,9 +9,9 @@ const AllTask = () => {
     // Filter tasks based on the selected status
     const filteredTasks = tasks.filter((task) => {
         if (filterStatus === 'all') return true;
-        if (filterStatus === 'completed') return task.mark === 'completed';
-        if (filterStatus === 'progress') return task.mark === 'progress';
-        if (filterStatus === 'pending') return task.mark === 'pending';
+        if (filterStatus === 'completed') return task.status === 'completed';
+        if (filterStatus === 'progress') return task.status === 'progress';
+        if (filterStatus === 'pending') return task.status === 'pending';
         return true;
     });
 
@@ -38,6 +38,7 @@ const AllTask = () => {
                         id="filterStatus"
                         value={filterStatus}
                         onChange={(e) => setFilterStatus(e.target.value)}
+                        className='outline-nones'
                     >
                         <option value="all">All</option>
                         <option value="completed">Completed</option>

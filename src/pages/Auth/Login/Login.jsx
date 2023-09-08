@@ -35,7 +35,7 @@ const Login = () => {
         <div className="flex justify-center items-center h-screen p-8">
             <div className="bg-white shadow rounded p-6 w-[400px]">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <h2 className="text-3xl text-center font-merriweather font-bold mb-2">Login</h2>
+                    <h2 className="text-2xl text-center font-merriweather font-bold mb-2">Welcome Back</h2>
                     <div className="mb-2">
                         <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
                             Email
@@ -95,15 +95,16 @@ const Login = () => {
                     <div className='text-center mt-4'>
                         <button
                             type="submit"
-                            className="btn btn-active btn-primary btn-sm w-full"
+                            className="btn brounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2 active:border-purple-600 active:shadow-none shadow-lg bg-gradient-to-tr from-purple-600 to-purple-500 border-purple-700 text-white w-full"
                         >
-                            Login
+                            <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-full group-hover:h-32 opacity-10"></span>
+                            <span className="relative">Log In</span>
                         </button>
                     </div>
                 </form>
 
                 <p className='text-center mt-3 font-semibold'>
-                    New to CTM? <Link to='/signup' className='text-yellow-500'>Sign Up</Link>
+                    New to CTM? <Link to='/signup' className='text-purple-600'>Sign Up</Link>
                 </p>
             </div>
         </div>
