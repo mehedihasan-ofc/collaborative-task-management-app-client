@@ -1,20 +1,33 @@
-import React, { useContext } from 'react';
-import useTasks from '../../../hooks/useTasks';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const MyTask = () => {
-
     const { user } = useContext(AuthContext);
-    const [tasks] = useTasks();
+    const [tasksData, setTasksData] = useState([]);
+    const [myTasks, setMyTasks] = useState([]);
 
-    const myTasks = tasks.filter(singleTask => singleTask.assignedTo === user.email);
+    useEffect(() => {
+        const tasksData = JSON.parse(localStorage.getItem('tasks')) || [];
+        setTasksData(tasksData);
 
-    console.log(myTasks);
+        const myTasks = tasksData.filter(singleTask => singleTask.assignedTo === user.email);
+        setMyTasks(myTasks);
+    }, [user.email]);
+
+    // Function to update the status of a task in local storage and UI
+    const updateTaskStatusInLocalStorage = (index, newStatus) => {
+        const updatedTasksData = [...tasksData];
+        updatedTasksData[index].status = newStatus;
+        localStorage.setItem('tasks', JSON.stringify(updatedTasksData));
+
+        // Update the state directly with the updated data
+        setTasksData(updatedTasksData);
+        setMyTasks(updatedTasksData.filter(singleTask => singleTask.assignedTo === user.email));
+    };
 
     return (
         <div className="overflow-x-auto shadow m-3">
             <table className="table">
-                {/* head */}
                 <thead>
                     <tr>
                         <th></th>
@@ -27,8 +40,7 @@ const MyTask = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* row 1 */}
-                    {tasks.map((task, index) => (
+                    {myTasks.map((task, index) => (
                         <tr key={index}>
                             <th>{index + 1}</th>
                             <td>{task.title}</td>
@@ -37,11 +49,26 @@ const MyTask = () => {
                             <td>{task.priority}</td>
                             <td>{task.status}</td>
                             <td>
-                                <button disabled={task.status === "progress" || task.status === "completed"} className="btn btn-xs btn-success">Progress</button>
+                                <button
+                                    disabled={task.status === "progress"}
+                                    className="btn btn-xs btn-success"
+                                    onClick={() => {
+                                        updateTaskStatusInLocalStorage(index, 'progress');
+                                    }}
+                                >
+                                    Progress
+                                </button>
                             </td>
-
                             <td>
-                                <button disabled={task.status === "progress" || task.status === "completed"} className="btn btn-xs btn-success">Completed</button>
+                                <button
+                                    disabled={task.status === "completed"}
+                                    className="btn btn-xs btn-success"
+                                    onClick={() => {
+                                        updateTaskStatusInLocalStorage(index, 'completed');
+                                    }}
+                                >
+                                    Completed
+                                </button>
                             </td>
                         </tr>
                     ))}
