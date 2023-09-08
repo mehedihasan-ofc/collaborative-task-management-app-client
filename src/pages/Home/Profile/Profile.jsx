@@ -33,6 +33,14 @@ const Profile = () => {
                 <div className="text-center">
                     <input
                         type="text"
+                        value={myData.role}
+                        readOnly
+                        className="bg-gray-100 px-2 py-1 w-full rounded-md mb-2 text-gray-700 font-semibold outline-none"
+                    />
+                </div>
+                <div className="text-center">
+                    <input
+                        type="text"
                         value={user?.email}
                         readOnly
                         className="bg-gray-100 px-2 py-1 w-full rounded-md mb-2 text-gray-700 font-semibold outline-none"

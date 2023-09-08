@@ -30,7 +30,7 @@ const MainLayout = () => {
                     {/* navbar */}
                     <div className="navbar bg-base-200">
                         <div className="flex-1">
-                            <a className="btn btn-ghost normal-case text-xl">CTMA</a>
+                            <a className="btn btn-ghost normal-case text-xl">Task Management</a>
                         </div>
                         <div className="flex-none gap-2">
                             <div className="dropdown dropdown-end">
@@ -60,12 +60,13 @@ const MainLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                    <ul className="menu p-4 w-64 min-h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
-                        <li><Link to="/dashboard"><FaChartBar />Dashboard</Link></li>
+                        <li className='mt-8'><Link to="/dashboard"><FaChartBar />Dashboard</Link></li>
+                        <div className="divider m-0"></div>
                         {!isTeamLeader && <li><Link to="/my-task"><FaTable />My Task</Link></li>}
-                        <li><Link to="/all-task"><FaTasks />All Task</Link></li>
                         {isTeamLeader && <li><Link to="/create-task"><FaRegCalendarPlus />Create Task</Link></li>}
+                        <li><Link to="/all-task"><FaTasks />All Task</Link></li>
                     </ul>
 
                 </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
+import { RotatingLines } from 'react-loader-spinner';
 
 const PrivateRoute = ({ children }) => {
 
@@ -8,7 +9,15 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
 
     if (isLoading) {
-        return <progress className="progress w-56"></progress>
+        return <div className='flex items-center justify-center h-screen'>
+            <RotatingLines
+                strokeColor="grey"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="96"
+                visible={true}
+            />
+        </div>
     }
 
     if (user) {
