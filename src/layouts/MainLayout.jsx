@@ -3,10 +3,14 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { FaChartBar, FaRegCalendarPlus, FaTasks, FaUserPlus } from "react-icons/fa";
+import useTeamLeader from '../hooks/useTeamLeader';
 
 const MainLayout = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    const [isTeamLeader] = useTeamLeader();
+
+    console.log(isTeamLeader);
 
     const handleLogOut = () => {
         logOut()
