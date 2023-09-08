@@ -78,7 +78,7 @@ const SignUp = () => {
                                 <input
                                     type="text"
                                     id="name"
-                                    className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md ${errors.name ? 'border-red-500' : 'border-gray-400'}`}
+                                    className={`border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md ${errors.name ? 'border-red-500' : 'border-gray-400'}`}
                                     placeholder="Enter your name"
                                     {...field}
                                     required // Marked as required
@@ -101,7 +101,7 @@ const SignUp = () => {
                             render={({ field }) => (
                                 <textarea
                                     id="bio"
-                                    className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md h-20 ${errors.bio ? 'border-red-500' : 'border-gray-400'}`}
+                                    className={`border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md h-20 ${errors.bio ? 'border-red-500' : 'border-gray-400'}`}
                                     placeholder="Enter your bio"
                                     {...field}
                                     required // Marked as required
@@ -125,7 +125,7 @@ const SignUp = () => {
                                 <input
                                     type="text"
                                     id="profilePicture"
-                                    className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md ${errors.profilePicture ? 'border-red-500' : 'border-gray-400'}`}
+                                    className={`border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md ${errors.profilePicture ? 'border-red-500' : 'border-gray-400'}`}
                                     placeholder="Enter the URL of your profile picture"
                                     {...field}
                                     required // Marked as required
@@ -148,7 +148,7 @@ const SignUp = () => {
                             render={({ field }) => (
                                 <select
                                     id="role"
-                                    className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md ${errors.role ? 'border-red-500' : 'border-gray-400'}`}
+                                    className={`border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md ${errors.role ? 'border-red-500' : 'border-gray-400'}`}
                                     {...field}
                                     required // Marked as required
                                 >
@@ -183,7 +183,7 @@ const SignUp = () => {
                                 <input
                                     type="email"
                                     id="email"
-                                    className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md ${errors.email ? 'border-red-500' : 'border-gray-400'}`}
+                                    className={`border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md ${errors.email ? 'border-red-500' : 'border-gray-400'}`}
                                     placeholder="Enter your email"
                                     {...field}
                                     required // Marked as required
@@ -214,7 +214,7 @@ const SignUp = () => {
                                     <input
                                         type={showPassword ? 'text' : 'password'}
                                         id="password"
-                                        className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md ${errors.password ? 'border-red-500' : 'border-gray-400'}`}
+                                        className={`border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md ${errors.password ? 'border-red-500' : 'border-gray-400'}`}
                                         placeholder="Enter your password"
                                         {...field}
                                         required // Marked as required

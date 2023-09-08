@@ -49,7 +49,7 @@ const Login = () => {
                                 <input
                                     type="email"
                                     id="email"
-                                    className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md ${errors.email ? 'border-red-500' : 'border-gray-400'}`}
+                                    className={`border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md ${errors.email ? 'border-red-500' : 'border-gray-400'}`}
                                     placeholder="Enter your email"
                                     {...field}
                                 />
@@ -73,7 +73,7 @@ const Login = () => {
                                     <input
                                         type={passwordType}
                                         id="password"
-                                        className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md ${errors.password ? 'border-red-500' : 'border-gray-400'}`}
+                                        className={`border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md ${errors.password ? 'border-red-500' : 'border-gray-400'}`}
                                         placeholder="Enter your password"
                                         {...field}
                                     />
@@ -90,10 +90,6 @@ const Login = () => {
                         {errors.password && (
                             <p className="text-red-500 mt-1">{errors.password.message}</p>
                         )}
-                    </div>
-
-                    <div className='text-end'>
-                        <p className='link link-hover'>Forget Password</p>
                     </div>
 
                     <div className='text-center mt-4'>

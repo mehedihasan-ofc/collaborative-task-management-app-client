@@ -62,7 +62,7 @@ const CreateTask = () => {
                         <input
                             type="text"
                             id="title"
-                            className="border-gray-400 border-solid border py-2 px-3 w-full rounded-md"
+                            className="border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md"
                             placeholder="Enter task title"
                             value={taskTitle}
                             onChange={(e) => setTaskTitle(e.target.value)}
@@ -75,7 +75,7 @@ const CreateTask = () => {
                         </label>
                         <textarea
                             id="description"
-                            className="border-gray-400 border-solid border py-2 px-3 w-full rounded-md h-32 resize-none"
+                            className="border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md h-32 resize-none"
                             placeholder="Enter task description"
                             value={taskDescription}
                             onChange={(e) => setTaskDescription(e.target.value)}
@@ -90,7 +90,7 @@ const CreateTask = () => {
                             <input
                                 type="date"
                                 id="dueDate"
-                                className="border-gray-400 border-solid border py-2 px-3 w-full rounded-md"
+                                className="border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md"
                                 value={dueDate}
                                 onChange={(e) => setDueDate(e.target.value)}
                                 required
@@ -102,7 +102,7 @@ const CreateTask = () => {
                             </label>
                             <select
                                 id="priorityLevel"
-                                className="border-gray-400 border-solid border py-2 px-3 w-full rounded-md"
+                                className="border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md"
                                 value={priorityLevel}
                                 onChange={(e) => setPriorityLevel(e.target.value)}
                                 required
@@ -120,7 +120,7 @@ const CreateTask = () => {
                         </label>
                         <select
                             id="assignedTo"
-                            className="border-gray-400 border-solid border py-2 px-3 w-full rounded-md"
+                            className="border-gray-400 outline-none border-solid border py-2 px-3 w-full rounded-md"
                             value={assignedTo}
                             onChange={(e) => setAssignedTo(e.target.value)}
                         >
