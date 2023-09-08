@@ -13,7 +13,8 @@ const CreateTask = () => {
     useEffect(() => {
         // Fetch users data from localStorage or an API and set it in the users state.
         const usersData = JSON.parse(localStorage.getItem('users')) || [];
-        setUsers(usersData);
+        const teamMembers = usersData.filter(user => user.role === "Team Member");
+        setUsers(teamMembers);
     }, []); // Runs only once when the component mounts
 
     // Function to handle form submission

@@ -8,6 +8,7 @@ import Profile from "../pages/Home/Profile/Profile";
 import CreateTask from "../pages/Home/CreateTask/CreateTask";
 import AllTask from "../pages/Home/AllTask/AllTask";
 import Dashboard from "../pages/Home/Dashboard/Dashboard";
+import MyTask from "../pages/Home/MyTask/MyTask";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Dashboard/>
+                element: <Dashboard />
             },
             {
                 path: "/profile",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: "/all-task",
                 element: <AllTask />
+            },
+            {
+                path: "/my-task",
+                element: <MyTask />
             },
             {
                 path: "/create-task",
