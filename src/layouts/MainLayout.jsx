@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
-import { FaChartBar, FaRegCalendarPlus, FaTasks, FaUserPlus } from "react-icons/fa";
+import { FaChartBar, FaRegCalendarPlus, FaTable, FaTasks, FaUserPlus } from "react-icons/fa";
 import useTeamLeader from '../hooks/useTeamLeader';
 
 const MainLayout = () => {
@@ -65,6 +65,7 @@ const MainLayout = () => {
                         <li><Link to="/dashboard"><FaChartBar />Dashboard</Link></li>
                         {isTeamLeader && <li><Link to="/add-member"><FaUserPlus />Add Member</Link></li>}
                         <li><Link to="/all-task"><FaTasks />All Task</Link></li>
+                        <li><Link to="/my-task"><FaTable />My Task</Link></li>
                         {isTeamLeader && <li><Link to="/create-task"><FaRegCalendarPlus />Create Task</Link></li>}
                     </ul>
 

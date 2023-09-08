@@ -67,7 +67,7 @@ const SignUp = () => {
                     <h2 className="text-3xl text-center font-merriweather font-bold mb-2">Sign up</h2>
                     <div className="mb-2">
                         <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">
-                            Name
+                            Full Name
                         </label>
                         <Controller
                             name="name"

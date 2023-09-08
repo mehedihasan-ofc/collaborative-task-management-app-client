@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 
 const CreateTask = () => {
     // State variables to store form data
@@ -26,7 +27,7 @@ const CreateTask = () => {
             dueDate: dueDate,
             priority: priorityLevel,
             assignedTo: assignedTo,
-            mark: "progress"
+            status: "pending"
         };
 
         // Retrieve existing tasks array from local storage or initialize it as an empty array
@@ -37,6 +38,8 @@ const CreateTask = () => {
 
         // Save the updated tasks array back to local storage
         localStorage.setItem('tasks', JSON.stringify(existingTasks));
+
+        toast.success("Task Created Successful")
 
         // Clear the form fields after submission
         setTaskTitle('');
