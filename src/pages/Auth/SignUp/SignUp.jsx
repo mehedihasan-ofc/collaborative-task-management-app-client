@@ -22,12 +22,14 @@ const SignUp = () => {
         // Handle form submission here (e.g., send data to the server).
         console.log(data);
 
-        createUser(data.email, data.password)
+        const { email, password, name, bio, profilePicture, role } = data;
+
+        createUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
 
-                updateUserData(loggedUser, data.name, data.profilePicture)
+                updateUserData(loggedUser, name, profilePicture, role)
                     .then(() => {
                         setReload(true);
                         console.log("updated");
@@ -37,10 +39,11 @@ const SignUp = () => {
 
                         // Add the new user data to the existing collection
                         userCollection.push({
-                            name: data.name,
-                            bio: data.bio,
-                            profilePicture: data.profilePicture,
-                            email: data.email,
+                            name,
+                            bio,
+                            profilePicture,
+                            email,
+                            role,
                         });
 
                         // Save the updated user collection to local storage
@@ -131,6 +134,34 @@ const SignUp = () => {
                         />
                         {errors.profilePicture && (
                             <p className="text-red-500 mt-1">{errors.profilePicture.message}</p>
+                        )}
+                    </div>
+                    <div className="mb-2">
+                        <label htmlFor="role" className="block text-gray-700 font-semibold mb-2">
+                            What best describes your role?
+                        </label>
+                        <Controller
+                            name="role"
+                            control={control}
+                            defaultValue=""
+                            rules={{ required: 'Role selection is required' }}
+                            render={({ field }) => (
+                                <select
+                                    id="role"
+                                    className={`border-gray-400 border-solid border py-2 px-3 w-full rounded-md ${errors.role ? 'border-red-500' : 'border-gray-400'}`}
+                                    {...field}
+                                    required // Marked as required
+                                >
+                                    <option value="" disabled>
+                                        Select your role
+                                    </option>
+                                    <option value="Team Leader">Team Leader</option>
+                                    <option value="Team Member">Team Member</option>
+                                </select>
+                            )}
+                        />
+                        {errors.role && (
+                            <p className="text-red-500 mt-1">{errors.role.message}</p>
                         )}
                     </div>
                     <div className="mb-2">
